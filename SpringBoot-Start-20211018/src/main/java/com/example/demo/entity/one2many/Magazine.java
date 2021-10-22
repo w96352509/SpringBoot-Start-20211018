@@ -2,6 +2,7 @@ package com.example.demo.entity.one2many;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class Magazine {
 	@Column
     private String title ;	
 	
-	@OneToMany
+	@OneToMany(mappedBy = "magazine" , cascade = CascadeType.ALL)   //被動在少數方
 	private Set<Page> pages;
 
 	public Long getId() {
