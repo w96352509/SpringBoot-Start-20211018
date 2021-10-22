@@ -1,27 +1,34 @@
-<html xml:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<title>Hello</title>
 </head>
 
 <body>
+
 	Hello <span th:text="${ name }">ABC(不會被破壞但會被取代)</span><p />
 	Hello <span th:utext="${ name }">ABC(不會被破壞但會被取代)</span><p />
 	<!-- utext 內容有包含HTML語法的-->
 	資料筆數:<div th:text="${#lists.size(scores)}">0</div>
 	 <table border="1">
 	 <tr>
-	 
+	  
 	     <th>分數</th>
 	     <th>序號</th>
 	     <th>大於90分</th>
 	     <th>Pass(>=60)</th>
 	 </tr>
+	 
 	 <tr th:each="score,scorestat:${scores}">
+	   
+	    
 	     <td th:text="${scorestat.index}">0</td>
 	     <td th:text="${score}">0</td>
 	     <td th:text="(${score}>=90)?'v':'x'"></td>
 	     <td th:if="${score}>=60">Pass</td>
+	     <td th:unless="${score}>=60">Fail</td>
+	     <td >
 	 </tr>
 	 </table>
 	
